@@ -7,7 +7,7 @@ const FontSelector = () => {
     <div>
       <select
         id='font-selector'
-        className='p-2 outline-none focus:shadow-none'
+        className='p-2 outline-none focus:shadow-none bg-transparent h-11'
         onChange={handleFontChange}
       >
         <option value='font-poppins'>Sans-serif</option>
