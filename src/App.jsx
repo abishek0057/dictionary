@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import Search from "./components/Search";
+import MainBody from "./components/MainBody";
+import Loading from "./components/Loading";
 
 const App = () => {
   const [result, setResult] = useState(null);
@@ -9,6 +11,7 @@ const App = () => {
     <div className='sm:max-w-2xl mx-auto'>
       <Navbar />
       <Search setResult={setResult} setError={setError} />
+      {result ? <MainBody result={result} /> : <Loading />}
     </div>
   );
 };

@@ -17,7 +17,7 @@ const fetchData = async (word) => {
 };
 
 const Search = ({ setResult, setError }) => {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState("keyboard");
 
   const searchBoxRef = useRef();
 
@@ -26,7 +26,7 @@ const Search = ({ setResult, setError }) => {
   };
 
   const handleInputChange = (e) => {
-    setInput(e.target.value);
+    setInput(e.target.value.toLowerCase());
   };
 
   const handleKeyPress = (e) => {
@@ -36,14 +36,18 @@ const Search = ({ setResult, setError }) => {
   };
 
   const searchMeaning = async () => {
+    setResult(null);
     try {
       const meaning = await fetchData(input);
-      console.log(meaning);
       setResult(meaning);
     } catch (error) {
       setError(error);
     }
   };
+
+  useEffect(() => {
+    searchMeaning();
+  }, []);
 
   return (
     <div className='p-3 sm:mt-5 flex justify-center bg-gray-200 rounded-lg mx-2'>
