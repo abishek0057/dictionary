@@ -4,7 +4,6 @@ import play from "../assets/icon-play.svg";
 const MainBody = ({ result }) => {
   const audioRef = useRef(null);
   const [showPlayBtn, setShowPlayBtn] = useState(true);
-  console.log(result);
 
   const handleAudioPlay = () => {
     const audio = audioRef.current;

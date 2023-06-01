@@ -1,17 +1,26 @@
 import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import Search from "./components/Search";
-import MainBody from "./components/MainBody";
+import Meaning from "./components/Meaning";
 import Loading from "./components/Loading";
+import NoMeaning from "./components/NoMeaning";
 
 const App = () => {
   const [result, setResult] = useState(null);
-  const [error, setError] = useState("");
+  const [input, setInput] = useState("Astrophile");
   return (
     <div className='sm:max-w-2xl mx-auto'>
       <Navbar />
-      <Search setResult={setResult} setError={setError} />
-      {result ? <MainBody result={result} /> : <Loading />}
+      <Search setResult={setResult} input={input} setInput={setInput} />
+      {result != null ? (
+        result[1] === 404 ? (
+          <NoMeaning result={result[0]} input={input} />
+        ) : (
+          <Meaning result={result[0]} />
+        )
+      ) : (
+        <Loading />
+      )}
     </div>
   );
 };

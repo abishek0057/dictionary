@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import search from "../assets/icon-search.svg";
 
 const baseUrl = "https://api.dictionaryapi.dev/api/v2/entries/en/";
@@ -6,19 +6,18 @@ const baseUrl = "https://api.dictionaryapi.dev/api/v2/entries/en/";
 const fetchData = async (word) => {
   try {
     const response = await fetch(baseUrl + word);
-    if (!response.ok) {
-      throw new Error("Failed to fetch data");
+    if (response.status === 404) {
+      const data = await response.json();
+      return [data, 404];
     }
     const data = await response.json();
-    return data;
+    return [data, 200];
   } catch (error) {
-    throw error;
+    console.log(error);
   }
 };
 
-const Search = ({ setResult, setError }) => {
-  const [input, setInput] = useState("keyboard");
-
+const Search = ({ setResult, input, setInput }) => {
   const searchBoxRef = useRef();
 
   const handleInputFocus = () => {
@@ -38,10 +37,10 @@ const Search = ({ setResult, setError }) => {
   const searchMeaning = async () => {
     setResult(null);
     try {
-      const meaning = await fetchData(input);
-      setResult(meaning);
+      const result = await fetchData(input);
+      setResult(result);
     } catch (error) {
-      setError(error);
+      console.log(error);
     }
   };
 
