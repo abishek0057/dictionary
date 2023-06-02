@@ -4,7 +4,6 @@ import play from "../assets/icon-play.svg";
 const MainBody = ({ result }) => {
   const audioRef = useRef(null);
   const [showPlayBtn, setShowPlayBtn] = useState(true);
-
   const handleAudioPlay = () => {
     const audio = audioRef.current;
     if (audio.paused) {
@@ -16,7 +15,7 @@ const MainBody = ({ result }) => {
   };
 
   useEffect(() => {
-    if (result[0].phonetic === undefined) {
+    if (result[0].phonetics.length <= 0 || result[0].phonetics[0].audio == "") {
       setShowPlayBtn(false);
     } else if (result && result.length > 0) {
       const audioUrl = result[0].phonetics.find(

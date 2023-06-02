@@ -7,7 +7,7 @@ import NoMeaning from "./components/NoMeaning";
 
 const App = () => {
   const [result, setResult] = useState(null);
-  const [input, setInput] = useState("Astrophile");
+  const [input, setInput] = useState("keyboard");
   return (
     <div className='sm:max-w-2xl mx-auto'>
       <Navbar />
