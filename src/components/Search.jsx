@@ -36,6 +36,7 @@ const Search = ({ setResult, input, setInput }) => {
 
   const searchMeaning = async () => {
     setResult(null);
+    localStorage.setItem("word", input);
     try {
       const result = await fetchData(input);
       setResult(result);
