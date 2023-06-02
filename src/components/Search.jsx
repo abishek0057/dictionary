@@ -49,13 +49,13 @@ const Search = ({ setResult, input, setInput }) => {
   }, []);
 
   return (
-    <div className='p-3 sm:mt-5 flex justify-center bg-gray-200 rounded-lg mx-2'>
+    <div className='p-3 sm:mt-5 flex justify-center bg-gray-200 rounded-lg mx-2 dark:bg-slate-700'>
       <input
         autoFocus
         ref={searchBoxRef}
         type='text'
         value={input}
-        className='w-full bg-gray-200 indent-2 outline-none sm:text-xl'
+        className='w-full bg-gray-200 indent-2 outline-none sm:text-xl dark:bg-slate-700'
         placeholder='Search for any words...'
         onFocus={handleInputFocus}
         onChange={handleInputChange}
