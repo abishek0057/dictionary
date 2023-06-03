@@ -67,7 +67,7 @@ const Search = ({ setResult, input, setInput }) => {
           type='text'
           value={input}
           className={`w-full bg-gray-200 indent-2 outline-none sm:text-xl dark:bg-slate-700 ${
-            !isValid ? "text-red-600" : "text-white"
+            !isValid ? "text-red-600" : "text-black dark:text-white"
           }`}
           placeholder='Search for any words...'
           onFocus={handleInputFocus}
