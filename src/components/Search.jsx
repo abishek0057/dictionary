@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import search from "../assets/icon-search.svg";
-import TextValidation from "./textValidation";
+import TextValidation from "./TextValidation";
 
 const baseUrl = "https://api.dictionaryapi.dev/api/v2/entries/en/";
 
