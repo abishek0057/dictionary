@@ -17,10 +17,10 @@ const MainBody = ({ result }) => {
   useEffect(() => {
     if (result[0].phonetics.length >= 1) {
       const audioUrl = result[0].phonetics.find(
-        (phonetic) => phonetic.audio !== undefined
-      ).audio;
+        (phonetic) => phonetic.audio.length > 5
+      );
       setShowPlayBtn(audioUrl ? true : false);
-      audioRef.current.src = audioUrl;
+      audioRef.current.src = audioUrl && audioUrl.audio ? audioUrl.audio : null;
     } else {
       setShowPlayBtn(false);
     }
